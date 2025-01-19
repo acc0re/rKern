@@ -24,6 +24,8 @@ private:
     Game& game;
     int selectedOption;
     std::vector<Star> stars;
+    float spaceshipBaseX;
+    Music backgroundMusic; // New member variable for the music stream
     void InitStars(int count);
     void UpdateStars(float deltaTime);
     void DrawStars();
