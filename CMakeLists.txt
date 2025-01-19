@@ -16,6 +16,7 @@ add_executable(raylib-project ${SRC_FILES}
         src/engine/gui/manager/GuiManager.cpp
         src/game/game_state/GameStateHandler.cpp
         src/game/game_state/MainMenuState.cpp
+        src/game/game_state/PlayState.cpp
 
 )
 # Sets the include directory
@@ -43,6 +44,7 @@ if (NOT imgui_FOUND)
           ${imgui_SOURCE_DIR}/imgui_widgets.cpp
           ${imgui_SOURCE_DIR}/imgui_tables.cpp
           include/game/game_state/MainMenuState.h
+          include/game/game_state/PlayState.h
   )
   # Set it's include directory
   target_include_directories(imgui INTERFACE ${imgui_SOURCE_DIR})

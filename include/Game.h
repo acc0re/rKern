@@ -15,6 +15,7 @@ public:
 
     void Run();
     void Shutdown();
+    GameStateHandler& GetGameStateHandler();
 
 private:
     void Init();

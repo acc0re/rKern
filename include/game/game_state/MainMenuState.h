@@ -25,10 +25,23 @@ private:
     int selectedOption;
     std::vector<Star> stars;
     float spaceshipBaseX;
-    Music backgroundMusic; // New member variable for the music stream
+    Music backgroundMusic;
+
+    // New variables for pre-calculated values
+    int titleX, titleY;
+    int startGameX, startGameY;
+    int optionsX, optionsY;
+    int exitX, exitY;
+    float spaceshipX, spaceshipY;
+    float flameLength;
+    Vector2 shipTop, shipLeft, shipRight;
+
     void InitStars(int count);
     void UpdateStars(float deltaTime);
     void DrawStars();
+    void CalculatePositionsAndValues(float time);
+    Vector2 CalculateFlameEnd(Vector2 start, float angle, float length);
+    Color CalculateFlameColor(int flameIndex, int numFlames, float time, bool isLeft);
 };
 
 #endif // MAINMENUSTATE_H
