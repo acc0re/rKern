@@ -2,6 +2,7 @@
 #define MAINMENUSTATE_H
 
 #include "GameStateHandler.h"
+#include "raylib.h"
 #include <vector>
 
 struct Star {
@@ -22,12 +23,13 @@ public:
 
 private:
     Game& game;
+    bool paused;
     int selectedOption;
     std::vector<Star> stars;
     float spaceshipBaseX;
     Music backgroundMusic;
+    Sound switchSound;
 
-    // New variables for pre-calculated values
     int titleX, titleY;
     int startGameX, startGameY;
     int optionsX, optionsY;
@@ -40,6 +42,7 @@ private:
     void UpdateStars(float deltaTime);
     void DrawStars();
     void CalculatePositionsAndValues(float time);
+    void TogglePause();
     Vector2 CalculateFlameEnd(Vector2 start, float angle, float length);
     Color CalculateFlameColor(int flameIndex, int numFlames, float time, bool isLeft);
 };

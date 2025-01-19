@@ -23,8 +23,8 @@ public:
     void PrevView();
 
 private:
-    std::vector<GuiView> views;  // Enthält alle Views
-    int activeViewIndex;         // Der Index der aktiven Ansicht
+    std::vector<GuiView> views;
+    int activeViewIndex;
 };
 
 #endif // GUI_MANAGER_HPP
