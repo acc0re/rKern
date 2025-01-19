@@ -4,7 +4,9 @@
 #include <raylib.h>
 #include <rlImGui.h>
 #include <imgui.h>
+#include "game/game_state/GameStateHandler.h"
 #include "engine/gui/manager/GuiManager.h"
+#include "game/game_state/MainMenuState.h"
 
 class Game {
 public:
@@ -12,13 +14,14 @@ public:
     ~Game();
 
     void Run();
+    void Shutdown();
 
 private:
     void Init();
     void Update(float deltaTime);
     void Render();
-    void Shutdown();
 
+    GameStateHandler gameStateHandler;
     GuiManager guiManager;
 };
 

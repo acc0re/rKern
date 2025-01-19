@@ -15,19 +15,12 @@ void Game::Init() {
 
     rlImGuiSetup(true);
 
-    guiManager.AddView([this]() {
-        ImGui::Text("Main menu");
-        if (ImGui::Button("Play")) {
-        }
+    gameStateHandler.ChangeState(std::make_unique<MainMenuState>(*this));
 
-        if (ImGui::Button("Exit")) {
-            //Close the game
-            this->Shutdown();
-        }
-    });
 }
 
 void Game::Update(float deltaTime) {
+    gameStateHandler.Update(deltaTime);
 }
 
 void Game::Render() {
@@ -35,6 +28,8 @@ void Game::Render() {
     ClearBackground(BLACK);
 
     guiManager.Render();
+
+    gameStateHandler.Draw();
 
     EndDrawing();
 }
@@ -47,6 +42,7 @@ void Game::Shutdown() {
 void Game::Run() {
     while (!WindowShouldClose()) {
         float deltaTime = GetFrameTime();
+      //  stateManager.HandleInput(this);
         Update(deltaTime);
         Render();
     }
