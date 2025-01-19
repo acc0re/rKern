@@ -14,7 +14,11 @@ file(GLOB ENGINE_SRC_FILES ${PROJECT_SOURCE_DIR}/src/engine/gui/manager/*.cpp)
 add_executable(raylib-project ${SRC_FILES} ${ENGINE_SRC_FILES})
 
 # Include directories for the main target
-target_include_directories(raylib-project PRIVATE ${PROJECT_SOURCE_DIR}/include)
+target_include_directories(raylib-project PUBLIC ${PROJECT_SOURCE_DIR}/include)
+target_include_directories(raylib-project PUBLIC ${PROJECT_SOURCE_DIR}/src)
+target_include_directories(raylib-project PUBLIC ${PROJECT_SOURCE_DIR}/src/engine/gui/manager)
+target_include_directories(raylib-project PUBLIC ${PROJECT_SOURCE_DIR}/src/engine/game_state)
+target_include_directories(raylib-project PUBLIC ${PROJECT_SOURCE_DIR}/src/game)
 
 # ==== IMGUI ====
 find_package(imgui QUIET)
@@ -33,7 +37,7 @@ if (NOT imgui_FOUND)
           ${imgui_SOURCE_DIR}/imgui_widgets.cpp
           ${imgui_SOURCE_DIR}/imgui_tables.cpp
   )
-  target_include_directories(imgui INTERFACE ${imgui_SOURCE_DIR})
+  target_include_directories(imgui PUBLIC ${imgui_SOURCE_DIR})
 endif()
 
 # ==== RAYLIB ====
@@ -56,7 +60,7 @@ if (NOT raylib_cpp_FOUND)
           GIT_TAG v5.0.2
   )
   FetchContent_MakeAvailable(raylib_cpp)
-  target_include_directories(raylib-project PRIVATE ${raylib_cpp_SOURCE_DIR}/include)
+  target_include_directories(raylib-project PUBLIC ${raylib_cpp_SOURCE_DIR}/include)
 endif()
 
 # ==== RLIMGUI ====
@@ -69,13 +73,12 @@ if (NOT rlimgui_FOUND)
   )
   FetchContent_MakeAvailable(rlImGui)
   add_library(rlimgui STATIC ${rlimgui_SOURCE_DIR}/rlImGui.cpp)
-  target_include_directories(rlimgui INTERFACE ${rlimgui_SOURCE_DIR})
-  target_link_libraries(rlimgui PRIVATE imgui raylib)
+  target_include_directories(rlimgui PUBLIC ${rlimgui_SOURCE_DIR})
+  target_link_libraries(rlimgui PUBLIC imgui raylib)
 endif()
 
 # Link all libraries
-target_link_libraries(raylib-project PRIVATE imgui rlimgui raylib raylib_cpp)
+target_link_libraries(raylib-project PUBLIC imgui rlimgui raylib raylib_cpp)
 
 # Include directories and libraries for all relevant targets
-target_include_directories(raylib-project PRIVATE ${imgui_SOURCE_DIR} ${raylib_SOURCE_DIR} ${rlimgui_SOURCE_DIR})
-target_link_libraries(raylib-project PRIVATE imgui raylib rlimgui raylib_cpp)
+target_include_directories(raylib-project PUBLIC ${imgui_SOURCE_DIR} ${raylib_SOURCE_DIR} ${rlimgui_SOURCE_DIR})

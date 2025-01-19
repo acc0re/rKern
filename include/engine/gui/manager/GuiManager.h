@@ -13,20 +13,13 @@ public:
     GuiManager();
     ~GuiManager();
 
-    // Fügt eine neue Ansicht hinzu
     void AddView(const GuiView& view);
 
-    // Setzt die Ansicht, die gerade aktiv ist
     void SetActiveView(int index);
 
-    // Rendert die aktive Ansicht
     void Render();
 
-
-    // Wechselt zur nächsten Ansicht (falls vorhanden)
     void NextView();
-
-    // Wechselt zur vorherigen Ansicht (falls vorhanden)
     void PrevView();
 
 private:
