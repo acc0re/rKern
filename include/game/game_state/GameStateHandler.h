@@ -25,7 +25,7 @@ public:
     void PopState();
 
     void Init();
-    void Update(float deltaTime);
+    void Update(float dt);
     void Draw();
     void Unload();
 

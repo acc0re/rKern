@@ -10,6 +10,15 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 # Include the command that downloads libraries
 include(FetchContent)
 
+set(SOURCES
+        src/game/game_state/MainMenuState.cpp
+        src/game/game_state/PlayState.cpp
+        src/game/Spaceship.cpp
+        src/game/MenuSpaceship.cpp
+        src/game/PlayerSpaceship.cpp
+        src/Game.cpp
+)
+
 file(GLOB SRC_FILES ${PROJECT_SOURCE_DIR}/src/*.cpp)
 # Creates the executable with the source files
 add_executable(raylib-project ${SRC_FILES}
@@ -17,6 +26,9 @@ add_executable(raylib-project ${SRC_FILES}
         src/game/game_state/GameStateHandler.cpp
         src/game/game_state/MainMenuState.cpp
         src/game/game_state/PlayState.cpp
+        src/game/Spaceship.cpp
+        src/game/MenuSpaceship.cpp
+        src/game/PlayerSpaceship.cpp
 
 )
 # Sets the include directory
@@ -43,8 +55,7 @@ if (NOT imgui_FOUND)
           ${imgui_SOURCE_DIR}/imgui_demo.cpp
           ${imgui_SOURCE_DIR}/imgui_widgets.cpp
           ${imgui_SOURCE_DIR}/imgui_tables.cpp
-          include/game/game_state/MainMenuState.h
-          include/game/game_state/PlayState.h
+          include/game/Star.h
   )
   # Set it's include directory
   target_include_directories(imgui INTERFACE ${imgui_SOURCE_DIR})

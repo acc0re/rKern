@@ -9,14 +9,13 @@ Game::~Game() {
 }
 
 void Game::Init() {
-    SetConfigFlags(FLAG_MSAA_4X_HINT);
-    InitWindow(1280, 720, "rKern");
+    SetConfigFlags(FLAG_MSAA_4X_HINT | FLAG_FULLSCREEN_MODE);
+    InitWindow(1920, 1080, "rKern");
     SetTargetFPS(60);
 
     rlImGuiSetup(true);
 
     gameStateHandler.ChangeState(std::make_unique<MainMenuState>(*this));
-
 }
 
 void Game::Update(float deltaTime) {
@@ -46,4 +45,8 @@ void Game::Run() {
         Update(deltaTime);
         Render();
     }
+}
+
+GameStateHandler& Game::GetGameStateHandler() {
+    return gameStateHandler;
 }

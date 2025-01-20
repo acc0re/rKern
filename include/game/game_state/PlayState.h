@@ -3,6 +3,9 @@
 #define PLAYSTATE_H
 
 #include "GameStateHandler.h"
+#include "game/PlayerSpaceship.h"
+#include "game/Star.h" // Include the common Star header
+#include <vector>
 
 class Game;
 
@@ -18,6 +21,12 @@ public:
 
 private:
     Game& game;
+    PlayerSpaceship playerSpaceship;
+    std::vector<Star> stars;
+
+    void InitStars(int count);
+    void UpdateStars(float deltaTime);
+    void DrawStars();
 };
 
 #endif // PLAYSTATE_H

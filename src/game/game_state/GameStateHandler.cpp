@@ -41,9 +41,9 @@ void GameStateHandler::Init() {
 }
 
 // Update des aktuellen Zustands
-void GameStateHandler::Update(float deltaTime) {
+void GameStateHandler::Update(float dt) {
     if (!stateStack.empty()) {
-        stateStack.back()->Update(deltaTime);
+        stateStack.back()->Update(dt);
     }
 }
 

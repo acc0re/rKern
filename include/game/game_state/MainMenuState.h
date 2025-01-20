@@ -1,13 +1,12 @@
+// include/game/game_state/MainMenuState.h
 #ifndef MAINMENUSTATE_H
 #define MAINMENUSTATE_H
 
 #include "GameStateHandler.h"
+#include "game/MenuSpaceship.h"
 #include "raylib.h"
+#include "game/Star.h" // Include the common Star header
 #include <vector>
-
-struct Star {
-    float x, y, speed;
-};
 
 class Game;
 
@@ -26,7 +25,7 @@ private:
     bool paused;
     int selectedOption;
     std::vector<Star> stars;
-    float spaceshipBaseX;
+    MenuSpaceship spaceship;
     Music backgroundMusic;
     Sound switchSound;
 
@@ -34,17 +33,12 @@ private:
     int startGameX, startGameY;
     int optionsX, optionsY;
     int exitX, exitY;
-    float spaceshipX, spaceshipY;
-    float flameLength;
-    Vector2 shipTop, shipLeft, shipRight;
 
     void InitStars(int count);
-    void UpdateStars(float deltaTime);
+    void UpdateStars(float dt);
     void DrawStars();
     void CalculatePositionsAndValues(float time);
     void TogglePause();
-    Vector2 CalculateFlameEnd(Vector2 start, float angle, float length);
-    Color CalculateFlameColor(int flameIndex, int numFlames, float time, bool isLeft);
 };
 
 #endif // MAINMENUSTATE_H
