@@ -14,7 +14,7 @@ public:
     ~Game();
 
     void Run();
-    void Shutdown();
+    static void Shutdown();
     GameStateHandler& GetGameStateHandler();
 
 private:

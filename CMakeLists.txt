@@ -56,6 +56,7 @@ if (NOT imgui_FOUND)
           ${imgui_SOURCE_DIR}/imgui_widgets.cpp
           ${imgui_SOURCE_DIR}/imgui_tables.cpp
           include/game/Star.h
+          include/game/Laser.h
   )
   # Set it's include directory
   target_include_directories(imgui INTERFACE ${imgui_SOURCE_DIR})

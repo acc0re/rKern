@@ -1,15 +1,18 @@
 #include "Game.h"
 
-Game::Game() {
+Game::Game()
+{
     Init();
 }
 
-Game::~Game() {
+Game::~Game()
+{
     Shutdown();
 }
 
-void Game::Init() {
-    SetConfigFlags(FLAG_MSAA_4X_HINT | FLAG_FULLSCREEN_MODE);
+void Game::Init()
+{
+    SetConfigFlags(FLAG_VSYNC_HINT | FLAG_FULLSCREEN_MODE);
     InitWindow(1920, 1080, "rKern");
     SetTargetFPS(60);
 
@@ -18,11 +21,13 @@ void Game::Init() {
     gameStateHandler.ChangeState(std::make_unique<MainMenuState>(*this));
 }
 
-void Game::Update(float deltaTime) {
+void Game::Update(float deltaTime)
+{
     gameStateHandler.Update(deltaTime);
 }
 
-void Game::Render() {
+void Game::Render()
+{
     BeginDrawing();
     ClearBackground(BLACK);
 
@@ -33,20 +38,24 @@ void Game::Render() {
     EndDrawing();
 }
 
-void Game::Shutdown() {
+void Game::Shutdown()
+{
     rlImGuiShutdown();
     CloseWindow();
 }
 
-void Game::Run() {
-    while (!WindowShouldClose()) {
+void Game::Run()
+{
+    while (!WindowShouldClose())
+    {
         float deltaTime = GetFrameTime();
-      //  stateManager.HandleInput(this);
+        //  stateManager.HandleInput(this);
         Update(deltaTime);
         Render();
     }
 }
 
-GameStateHandler& Game::GetGameStateHandler() {
+GameStateHandler& Game::GetGameStateHandler()
+{
     return gameStateHandler;
 }

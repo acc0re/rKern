@@ -18,11 +18,13 @@ public:
     void Draw() override;
     void Unload() override;
     void OnExit() override;
+    void GenerateTerrain();
 
 private:
     Game& game;
     PlayerSpaceship playerSpaceship;
     std::vector<Star> stars;
+    std::vector<float> terrainHeights;
 
     void InitStars(int count);
     void UpdateStars(float deltaTime);
